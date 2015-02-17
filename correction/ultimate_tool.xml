@@ -1,0 +1,67 @@
+<tool id="ultimate_tool" name="Ultimate tool" version="1.0.0">
+  <description>Resize, rotate, append and convert images</description>
+  <command interpreter="python">
+	ultimate_tool.py 
+	--choice ${choice_conditional.choice}
+	#if $choice_conditional.choice=="resize"
+		--image ${choice_conditional.image}
+		--size ${choice_conditional.size}
+	#else if $choice_conditional.choice=="rotate"
+		--image ${choice_conditional.image}
+		--angle ${choice_conditional.angle}
+ 	#else if $choice_conditional.choice=="append"
+		--images ${choice_conditional.images}
+	#else if $choice_conditional.choice=="convert"
+		--image ${choice_conditional.image}
+		#if $choice_conditional.pdf == "True" 
+		   --pdf
+		#end if
+		#if $choice_conditional.jpg == "True"
+		   --jpg
+		#end if
+		#if $choice_conditional.tiff == "True"
+		   --tiff
+		#end if
+        #end if
+	--output $result
+  </command>
+  <inputs>
+  <conditional name="choice_conditional">
+	<param name="choice" type="select" label="Choose your operation" >
+		<option value="resize">resize</option>
+                <option value="rotate">rotate</option>
+                <option value="append">append</option>
+                <option value="convert">convert</option>
+	</param>
+	
+	<when value="resize">
+		<param name="image" type="data" format="png" label="Image to resize" />
+		<param name="size" type="integer" value="0" max="100" label="Percentage" />
+	</when>
+	
+	<when value="rotate">
+		<param name="image" type="data" format="png" label="Image to rotate" />
+                <param name="angle" type="integer" value="0" max="360" label="Angle" />
+        </when>
+
+	<when value="append">
+		<param name="images" type="data" multiple="true" format="png" label="Images to append" />
+        </when>
+
+        <when value="convert">
+		<param name="image" type="data" format="png" label="Image to convert" />
+		<param name="pdf" type="boolean" checked="true" label="pdf" />
+		<param name="jpg" type="boolean" checked="false" label="jpg" />
+		<param name="tiff" type="boolean" checked="false" label="tiff" />
+        </when>
+
+  </conditional>
+  </inputs>
+  <outputs>
+    <data format="txt" name="result" >
+	<discover_datasets pattern="__designation_and_ext__" directory="result" visible="true" />
+    </data>
+  </outputs>
+  <help>
+  </help>
+</tool>

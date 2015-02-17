@@ -1,0 +1,20 @@
+<tool id="append" name="append" version="1.0.0">
+  <description>Append images</description>
+  <command>
+convert -append
+#for $image in $images
+${image.input}
+#end for
+${image_append}
+  </command>
+  <inputs>
+  <repeat name="images" title="images">
+    <param name="input" type="data" format="png" label="Image"/>
+  </repeat>
+  </inputs>
+  <outputs>
+    <data format="png" name="image_append" />
+  </outputs>
+  <help>
+  </help>
+</tool>

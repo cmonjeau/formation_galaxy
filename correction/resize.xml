@@ -1,0 +1,15 @@
+<tool id="resize" name="resize" version="1.0.0">
+  <description>Resize an image (by percentage)</description>
+  <command>
+	convert ${input} -resize ${size}% ${image_resize}
+  </command>
+  <inputs>
+    <param name="input" type="data" format="png" label="Dataset"/>
+    <param name="size" type="integer" value="100" label="percentage" max="100"/>
+  </inputs>
+  <outputs>
+    <data format="png" name="image_resize" />
+  </outputs>
+  <help>
+  </help>
+</tool>

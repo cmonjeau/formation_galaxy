@@ -1,0 +1,16 @@
+<tool id="convert" name="convert" version="1.0.0">
+  <description>Convert images into jpg, tiff, bmp and pdf</description>
+  <command interpreter="python">
+	convert.py ${images} > ${image_convert}
+  </command>
+  <inputs>
+  <param name="images" type="data" multiple="true" format="png" label="Image"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="image_convert" >
+	<discover_datasets pattern="__designation_and_ext__" directory="convert" visible="true" />
+    </data>
+  </outputs>
+  <help>
+  </help>
+</tool>

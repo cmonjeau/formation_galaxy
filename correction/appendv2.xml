@@ -1,0 +1,16 @@
+<tool id="append" name="append" version="2.0.0">
+  <description>Append images</description>
+  <command interpreter="python">
+appendv2.py
+${images}
+${image_append}
+  </command>
+  <inputs>
+  <param name="images" type="data" multiple="true" format="png" label="Image"/>
+  </inputs>
+  <outputs>
+    <data format="png" name="image_append" />
+  </outputs>
+  <help>
+  </help>
+</tool>
