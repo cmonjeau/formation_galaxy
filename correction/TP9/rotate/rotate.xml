@@ -1,0 +1,18 @@
+<tool id="rotate" name="rotate" version="1.0.0">
+  <description>Rotate an image</description>
+ <requirements>
+       <requirement type="package" version="6.9.0">package_imagemagick</requirement>
+ </requirements>
+  <command interpreter="bash">
+	rotate.sh ${input} ${angle} ${image_rotate}
+  </command>
+  <inputs>
+    <param name="input" type="data" format="png" label="Dataset"/>
+    <param name="angle" type="integer" value="0" label="percentage" max="360"/>
+  </inputs>
+  <outputs>
+    <data format="png" name="image_rotate" />
+  </outputs>
+  <help>
+  </help>
+</tool>

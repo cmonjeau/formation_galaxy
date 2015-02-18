@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+<package name="package_imagemagick" version="6.9.0">
+<install version="1.0">
+	<actions>
+		<action type="download_by_url">http://www.imagemagick.org/download/ImageMagick.tar.gz</action>
+		<action type="shell_command">./configure</action>
+		<action type="make_install" />
+		<action type="shell_command">ldconfig /usr/local/lib</action>
+
+		<!-- create env.sh -->
+		<action type="set_environment">
+			<environment_variable name="PATH" action="prepend_to">/usr/local/bin</environment_variable>
+		</action>
+	</actions>
+</install>
+</package>
+</tool_dependency>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+<package name="package_imagemagick" version="6.9.0">
+         <repository toolshed="http://cloud-42.genouest.org/toolshed" name="package_imagemagick" owner="cmonjeau" prior_installation_required="True" changeset_revision="88fe7d2a71a1"/>
+</package>
+</tool_dependency>
